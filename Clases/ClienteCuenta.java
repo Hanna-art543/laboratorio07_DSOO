@@ -1,29 +1,42 @@
 package Clases;
 
-// Esta clase sirve como "puente" para registrar qué cliente es dueño de qué cuenta
-public class ClienteCuenta {
-    private Cliente cliente;
+import java.util.*;
+
+class ClienteCuenta {
+
+    private ArrayList<Cliente> clientes;
     private Cuenta cuenta;
 
-    //Constructor que usa la clase Banco
+    //CONSTRUCTOR
+    public ClienteCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+        clientes = new ArrayList<>();
+    }
+
     public ClienteCuenta(Cliente cliente, Cuenta cuenta) {
-        this.cliente = cliente;
+        clientes.add(cliente);
         this.cuenta = cuenta;
     }
 
-    // Getters que Banco.java necesita para buscar
-    public Cliente getCliente() {
-        return cliente;
+    public ClienteCuenta(ArrayList<Cliente> clientes, Cuenta cuenta) {
+        this.clientes = clientes;
+        this.cuenta = cuenta;
+    }
+
+    public void asociarCliente(Cliente cliente) {
+        clientes.add(cliente);
     }
 
     public Cuenta getCuenta() {
         return cuenta;
     }
-    
-    @Override
-    public String toString() {
-        return "Relacion -> Cliente: " + cliente.getNombre() + 
-               " --- Cuenta: " + cuenta.getIdCuenta() +
-               " (Saldo: " + cuenta.getSaldo() + ")";
+
+    public Cliente getCliente(int Index) {
+        return clientes.get(Index);
+
+    }
+
+    public int CantidadClientes() {
+        return clientes.size();
     }
 }
