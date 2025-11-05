@@ -88,8 +88,8 @@ public class Transaccion {
         
         // Para los constructores completos
         return "Transaccion{" +
-                "\nidCliente='" + idCliente + +
-                "\nidEmpleado='" + idEmpleado +  +
+                "\nidCliente='" + idCliente + 
+                "\nidEmpleado='" + idEmpleado +  
                 "\nCuenta=" + (cuenta != null ? cuenta.getIdCuenta() : "null") +
                 "\nMonto=" + monto +
                 '}';
