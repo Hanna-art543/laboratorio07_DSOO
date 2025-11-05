@@ -1,7 +1,7 @@
 import Clases.*;
 import java.util.Scanner;
 
-public class SistemaBancarioInteractivo {
+public class Principal {
 
     public static void main(String[] args) {
         
@@ -42,7 +42,7 @@ public class SistemaBancarioInteractivo {
             switch (opcion) {
                 case 1:
                     // REALIZAR DEPÓSITO
-                    System.out.println("\n== DEPÓSITO ==");
+                    System.out.println("\nDEPÓSITO");
                     System.out.print("Ingrese ID del Cliente (ej: C-101): ");
                     String idClienteDep = sc.nextLine();
                     System.out.print("Ingrese ID de la Cuenta (ej: A-1001): ");
