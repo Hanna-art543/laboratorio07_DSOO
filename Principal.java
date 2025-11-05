@@ -10,7 +10,7 @@ public class SistemaBancarioInteractivo {
         Scanner sc = new Scanner(System.in);
         boolean salir = false;
 
-        // --- PRE-CARGAMOS DATOS PARA QUE EL SISTEMA SEA FUNCIONAL ---
+        //PRE-CARGAMOS DATOS PARA QUE EL SISTEMA SEA FUNCIONAL
         miBanco.registrarEmpleado("Carlos Ruiz", "E-001", "Oficina Principal");
         miBanco.registrarCliente("Ana Gómez", "C-101", "Av. Siempre Viva 123");
         miBanco.registrarCliente("Luis Paz", "C-102", "Calle Falsa 456");
@@ -18,13 +18,13 @@ public class SistemaBancarioInteractivo {
         miBanco.registrarCuenta("C-102", "S-2002", false); // Cuenta para Luis
         miBanco.generarDeposito("C-101", "A-1001", 1000.0, "E-001"); // Saldo inicial Ana
         miBanco.generarDeposito("C-102", "S-2002", 500.0, "E-001"); // Saldo inicial Luis
-        System.out.println("=============================================");
-        System.out.println("== Sistema de Banco - DATOS PRE-CARGADOS ==");
-        System.out.println("=============================================");
+        System.out.println();
+        System.out.println("Sistema de Banco - DATOS PRE-CARGADOS");
+        System.out.println();
 
         // Bucle principal del menú
         while (!salir) {
-            System.out.println("\n--- MENÚ PRINCIPAL DEL BANCO ---");
+            System.out.println("\nMENÚ PRINCIPAL DEL BANCO");
             System.out.println("1. Realizar Depósito");
             System.out.println("2. Realizar Retiro");
             System.out.println("3. Registrar Nuevo Cliente");
@@ -41,7 +41,7 @@ public class SistemaBancarioInteractivo {
 
             switch (opcion) {
                 case 1:
-                    // --- REALIZAR DEPÓSITO ---
+                    // REALIZAR DEPÓSITO
                     System.out.println("\n== DEPÓSITO ==");
                     System.out.print("Ingrese ID del Cliente (ej: C-101): ");
                     String idClienteDep = sc.nextLine();
@@ -57,8 +57,8 @@ public class SistemaBancarioInteractivo {
                     break;
 
                 case 2:
-                    // --- REALIZAR RETIRO ---
-                    System.out.println("\n== RETIRO ==");
+                    //REALIZAR RETIRO
+                    System.out.println("\nRETIRO");
                     System.out.print("Ingrese ID del Cliente (ej: C-101): ");
                     String idClienteRet = sc.nextLine();
                     System.out.print("Ingrese ID de la Cuenta (ej: A-1001): ");
@@ -73,8 +73,8 @@ public class SistemaBancarioInteractivo {
                     break;
 
                 case 3:
-                    // --- REGISTRAR CLIENTE ---
-                    System.out.println("\n== REGISTRAR NUEVO CLIENTE ==");
+                    //REGISTRAR CLIENTE
+                    System.out.println("\nREGISTRAR NUEVO CLIENTE");
                     System.out.print("Ingrese Nombre completo: ");
                     String nombreCliente = sc.nextLine();
                     System.out.print("Ingrese ID (Cédula/RUC): ");
@@ -86,8 +86,8 @@ public class SistemaBancarioInteractivo {
                     break;
 
                 case 4:
-                    // --- REGISTRAR CUENTA ---
-                    System.out.println("\n== REGISTRAR NUEVA CUENTA ==");
+                    //REGISTRAR CUENTA
+                    System.out.println("\nREGISTRAR NUEVA CUENTA");
                     System.out.print("Ingrese ID del Cliente existente: ");
                     String idClienteCuenta = sc.nextLine();
                     System.out.print("Ingrese el nuevo ID de Cuenta: ");
@@ -97,8 +97,8 @@ public class SistemaBancarioInteractivo {
                     break;
 
                 case 5:
-                    // --- VER HISTORIAL DE CUENTA ---
-                    System.out.println("\n== HISTORIAL DE TRANSACCIONES DE CUENTA ==");
+                    //VER HISTORIAL DE CUENTA
+                    System.out.println("\nHISTORIAL DE TRANSACCIONES DE CUENTA");
                     System.out.print("Ingrese el ID de la Cuenta a consultar: ");
                     String idCuentaHist = sc.nextLine();
                     
@@ -106,8 +106,8 @@ public class SistemaBancarioInteractivo {
                     break;
 
                 case 6:
-                    // --- VER ACCIONES DE EMPLEADO ---
-                    System.out.println("\n== ACCIONES POR EMPLEADO ==");
+                    //VER ACCIONES DE EMPLEADO
+                    System.out.println("\nACCIONES POR EMPLEADO");
                     System.out.print("Ingrese el ID del Empleado a consultar: ");
                     String idEmpHist = sc.nextLine();
                     
@@ -115,19 +115,19 @@ public class SistemaBancarioInteractivo {
                     break;
 
                 case 7:
-                    // --- VER CLIENTES Y CUENTAS ---
-                    System.out.println("\n== LISTADO DE CLIENTES Y CUENTAS ==");
+                    //VER CLIENTES Y CUENTAS
+                    System.out.println("\nLISTADO DE CLIENTES Y CUENTAS");
                     miBanco.mostrarClienteCuentas();
                     break;
                 
                 case 8:
-                    // --- VER EMPLEADOS ---
-                    System.out.println("\n== LISTADO DE EMPLEADOS ==");
+                    //VER EMPLEADOS
+                    System.out.println("\nLISTADO DE EMPLEADOS");
                     miBanco.mostrarEmpleados();
                     break;
 
                 case 9:
-                    // --- SALIR ---
+                    // SALIR
                     salir = true;
                     System.out.println("Gracias por usar el sistema bancario. ¡Hasta luego!");
                     break;
@@ -137,6 +137,6 @@ public class SistemaBancarioInteractivo {
             }
         }
         
-        sc.close(); // Cerrar el scanner al salir
+        sc.close(); 
     }
 }
