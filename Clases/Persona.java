@@ -1,5 +1,6 @@
 package Clases;
-class Persona {
+
+public class Persona {
     protected String nombre;
     protected String id;
     protected String direccion;
