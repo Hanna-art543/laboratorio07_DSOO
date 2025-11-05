@@ -1,50 +1,142 @@
-import Clases.*; // Importa todas tus clases
+import Clases.*;
+import java.util.Scanner;
 
-public class Principal {
+public class SistemaBancarioInteractivo {
 
     public static void main(String[] args) {
         
-        // 1. Crear el Banco
+        // Inicializamos el banco y el scanner
         Banco miBanco = new Banco();
-        System.out.println("Sistema de Banco iniciado.");
+        Scanner sc = new Scanner(System.in);
+        boolean salir = false;
 
-        // 2. Registrar Empleados y Clientes
+        // --- PRE-CARGAMOS DATOS PARA QUE EL SISTEMA SEA FUNCIONAL ---
         miBanco.registrarEmpleado("Carlos Ruiz", "E-001", "Oficina Principal");
         miBanco.registrarCliente("Ana Gómez", "C-101", "Av. Siempre Viva 123");
         miBanco.registrarCliente("Luis Paz", "C-102", "Calle Falsa 456");
-
-        // 3. Mostrar listas iniciales
-        miBanco.mostrarEmpleados();
-        miBanco.mostrarClientes();
-
-        // 4. Registrar Cuentas para los clientes
-        System.out.println("\n--- Registrando Cuentas ---");
         miBanco.registrarCuenta("C-101", "A-1001", true); // Cuenta para Ana
         miBanco.registrarCuenta("C-102", "S-2002", false); // Cuenta para Luis
-        miBanco.registrarCuenta("C-999", "A-3003", true); // Cliente que no existe
+        miBanco.generarDeposito("C-101", "A-1001", 1000.0, "E-001"); // Saldo inicial Ana
+        miBanco.generarDeposito("C-102", "S-2002", 500.0, "E-001"); // Saldo inicial Luis
+        System.out.println("=============================================");
+        System.out.println("== Sistema de Banco - DATOS PRE-CARGADOS ==");
+        System.out.println("=============================================");
 
-        miBanco.mostrarClienteCuentas();
+        // Bucle principal del menú
+        while (!salir) {
+            System.out.println("\n--- MENÚ PRINCIPAL DEL BANCO ---");
+            System.out.println("1. Realizar Depósito");
+            System.out.println("2. Realizar Retiro");
+            System.out.println("3. Registrar Nuevo Cliente");
+            System.out.println("4. Registrar Nueva Cuenta a Cliente");
+            System.out.println("5. Ver Historial de Transacciones de Cuenta");
+            System.out.println("6. Ver Acciones de Empleado");
+            System.out.println("7. Ver Todos los Clientes y Cuentas");
+            System.out.println("8. Ver Todos los Empleados");
+            System.out.println("9. Salir");
+            System.out.print("Seleccione una opción: ");
 
-        // 5. Realizar Operaciones (Depósitos y Retiros)
-        System.out.println("\n--- Realizando Operaciones ---");
-        miBanco.generarDeposito("C-101", "A-1001", 500.0, "E-001");
-        miBanco.generarDeposito("C-102", "S-2002", 300.0, "E-001");
-        
-        System.out.println("---");
-        miBanco.generarRetiro("C-101", "A-1001", 100.0, "E-001");
-        miBanco.generarRetiro("C-102", "S-2002", 400.0, "E-001"); // Fondos insuficientes
-        miBanco.generarRetiro("C-101", "A-1001", 1000.0, "E-001"); // Fondos insuficientes
-        miBanco.generarDeposito("C-101", "A-1001", 50.0, "E-001");
+            int opcion = sc.nextInt();
+            sc.nextLine(); // Limpiar el buffer del scanner
 
-        // 6. Consultar Historiales
-        miBanco.historialTransacciones("A-1001"); // Historial de Ana
-        miBanco.historialTransacciones("S-2002"); // Historial de Luis
+            switch (opcion) {
+                case 1:
+                    // --- REALIZAR DEPÓSITO ---
+                    System.out.println("\n== DEPÓSITO ==");
+                    System.out.print("Ingrese ID del Cliente (ej: C-101): ");
+                    String idClienteDep = sc.nextLine();
+                    System.out.print("Ingrese ID de la Cuenta (ej: A-1001): ");
+                    String idCuentaDep = sc.nextLine();
+                    System.out.print("Ingrese Monto a depositar: ");
+                    double montoDep = sc.nextDouble();
+                    sc.nextLine(); // Limpiar buffer
+                    System.out.print("Ingrese ID del Empleado (ej: E-001): ");
+                    String idEmpDep = sc.nextLine();
+                    
+                    miBanco.generarDeposito(idClienteDep, idCuentaDep, montoDep, idEmpDep);
+                    break;
+
+                case 2:
+                    // --- REALIZAR RETIRO ---
+                    System.out.println("\n== RETIRO ==");
+                    System.out.print("Ingrese ID del Cliente (ej: C-101): ");
+                    String idClienteRet = sc.nextLine();
+                    System.out.print("Ingrese ID de la Cuenta (ej: A-1001): ");
+                    String idCuentaRet = sc.nextLine();
+                    System.out.print("Ingrese Monto a retirar: ");
+                    double montoRet = sc.nextDouble();
+                    sc.nextLine(); // Limpiar buffer
+                    System.out.print("Ingrese ID del Empleado (ej: E-001): ");
+                    String idEmpRet = sc.nextLine();
+                    
+                    miBanco.generarRetiro(idClienteRet, idCuentaRet, montoRet, idEmpRet);
+                    break;
+
+                case 3:
+                    // --- REGISTRAR CLIENTE ---
+                    System.out.println("\n== REGISTRAR NUEVO CLIENTE ==");
+                    System.out.print("Ingrese Nombre completo: ");
+                    String nombreCliente = sc.nextLine();
+                    System.out.print("Ingrese ID (Cédula/RUC): ");
+                    String idCliente = sc.nextLine();
+                    System.out.print("Ingrese Dirección: ");
+                    String dirCliente = sc.nextLine();
+                    
+                    miBanco.registrarCliente(nombreCliente, idCliente, dirCliente);
+                    break;
+
+                case 4:
+                    // --- REGISTRAR CUENTA ---
+                    System.out.println("\n== REGISTRAR NUEVA CUENTA ==");
+                    System.out.print("Ingrese ID del Cliente existente: ");
+                    String idClienteCuenta = sc.nextLine();
+                    System.out.print("Ingrese el nuevo ID de Cuenta: ");
+                    String idCuentaNueva = sc.nextLine();
+                    
+                    miBanco.registrarCuenta(idClienteCuenta, idCuentaNueva, true); // true = tipo (puedes mejorarlo)
+                    break;
+
+                case 5:
+                    // --- VER HISTORIAL DE CUENTA ---
+                    System.out.println("\n== HISTORIAL DE TRANSACCIONES DE CUENTA ==");
+                    System.out.print("Ingrese el ID de la Cuenta a consultar: ");
+                    String idCuentaHist = sc.nextLine();
+                    
+                    miBanco.historialTransacciones(idCuentaHist);
+                    break;
+
+                case 6:
+                    // --- VER ACCIONES DE EMPLEADO ---
+                    System.out.println("\n== ACCIONES POR EMPLEADO ==");
+                    System.out.print("Ingrese el ID del Empleado a consultar: ");
+                    String idEmpHist = sc.nextLine();
+                    
+                    miBanco.historialTransaccionesEmpleado(idEmpHist);
+                    break;
+
+                case 7:
+                    // --- VER CLIENTES Y CUENTAS ---
+                    System.out.println("\n== LISTADO DE CLIENTES Y CUENTAS ==");
+                    miBanco.mostrarClienteCuentas();
+                    break;
+                
+                case 8:
+                    // --- VER EMPLEADOS ---
+                    System.out.println("\n== LISTADO DE EMPLEADOS ==");
+                    miBanco.mostrarEmpleados();
+                    break;
+
+                case 9:
+                    // --- SALIR ---
+                    salir = true;
+                    System.out.println("Gracias por usar el sistema bancario. ¡Hasta luego!");
+                    break;
+
+                default:
+                    System.out.println("Opción no válida. Por favor, intente de nuevo.");
+            }
+        }
         
-        miBanco.historialTransaccionesEmpleado("E-001"); // Historial de Carlos
-        
-        // 7. Mostrar estado final
-        System.out.println("\n--- Estado Final del Banco ---");
-        miBanco.mostrarClienteCuentas(); // Muestra saldos actualizados
-        miBanco.mostrarTransacciones();
+        sc.close(); // Cerrar el scanner al salir
     }
 }
