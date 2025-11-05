@@ -2,7 +2,7 @@ package Clases;
 import java.util.*;
 
 //Hereda de la clase Persona
-class Empleado extends Persona{
+public class Empleado extends Persona{
     private List<String> accionesRealizadas; 
 
     //Constructor sobrecargado
@@ -10,7 +10,6 @@ class Empleado extends Persona{
         super(nombre, id, direccion);
         this.accionesRealizadas = new ArrayList<>();
     }
-
 
     //Método para agregar
     public void agregarAccion(String accionRealizada) {
@@ -28,6 +27,7 @@ class Empleado extends Persona{
             }
         }
     }
+    
     @Override
     public void mostrarInformacion () {
         super.mostrarInformacion();
