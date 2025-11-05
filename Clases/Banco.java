@@ -5,14 +5,14 @@ public class Banco {
     // Atributos (agregación con otras clases)
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Empleado> listaEmpleados;
-    private ArrayList<ClienteCuenta> listaClienteCuentas;
+    private ArrayList<ClienteCuenta> listaClienteCuenta;
     private ArrayList<Transaccion> listaTransacciones;
 
     // Constructor 
     public Banco() {
         listaClientes = new ArrayList<>();
         listaEmpleados = new ArrayList<>();
-        listaClienteCuentas = new ArrayList<>();
+        listaClienteCuenta = new ArrayList<>();
         listaTransacciones = new ArrayList<>();
     }
 
