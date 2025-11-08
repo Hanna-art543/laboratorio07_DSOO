@@ -2,6 +2,7 @@ package Clases;
 import java.util.*;
 
 public class Cuenta {
+    //Atributos
     private String idCuenta;
     private Double saldo;
     private ArrayList<Transaccion> Transacciones;

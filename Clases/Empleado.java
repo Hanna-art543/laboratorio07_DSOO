@@ -1,7 +1,7 @@
 package Clases;
 import java.util.*;
 
-//Hereda de la clase Persona
+//Hereda Empleado de la clase Persona
 public class Empleado extends Persona{
     private List<String> accionesRealizadas; 
 

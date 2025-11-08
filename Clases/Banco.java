@@ -9,6 +9,7 @@ public class Banco {
     private ArrayList<ClienteCuenta> listaClienteCuenta; // Nombre corregido
     private ArrayList<Transaccion> listaTransacciones;
 
+    
     // Constructor 
     public Banco() {
         listaClientes = new ArrayList<>();

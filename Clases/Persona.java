@@ -1,6 +1,7 @@
 package Clases;
 
 public class Persona {
+    //Atributos
     protected String nombre;
     protected String id;
     protected String direccion;

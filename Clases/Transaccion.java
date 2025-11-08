@@ -1,6 +1,7 @@
 package Clases;
 
 public class Transaccion {
+    //Atributos protegidos
     protected String idCliente;
     protected String idEmpleado;
     protected Cuenta cuenta;

@@ -2,7 +2,6 @@ import Clases.*;
 import java.util.Scanner;
 
 public class Principal {
-
     public static void main(String[] args) {
         
         // Inicializamos el banco y el scanner
@@ -10,6 +9,7 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
         boolean salir = false;
 
+        
         //PRE-CARGAMOS DATOS PARA QUE EL SISTEMA SEA FUNCIONAL
         miBanco.registrarEmpleado("Carlos Ruiz", "E-001", "Oficina Principal");
         miBanco.registrarCliente("Ana Gómez", "C-101", "Av. Siempre Viva 123");

@@ -1,5 +1,6 @@
 package Clases;
 
+//Hereda de Transaccion
 public class Deposito extends Transaccion{
 
     //Constructor vacío que necesita Banco.java
